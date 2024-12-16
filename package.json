@@ -1,0 +1,72 @@
+{
+  "name": "JamesDeeMedia",
+  "version": "2.0.3",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "build": "yarn compile && yarn next build",
+    "vercel-build": "yarn build",
+    "clean": "rimraf build-tsc .next node_modules",
+    "compile": "tsc --build --verbose",
+    "dev": "yarn compile && yarn next dev",
+    "lint": "prettier --write './src/**/*.{js,jsx,json,ts,tsx}' && eslint './src/**/*.{js,jsx,ts,tsx}' --fix --max-warnings=0",
+    "start": "yarn next start",
+    "sitemap": "yarn next-sitemap"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.7.16",
+    "@heroicons/react": "^2.2.0",
+    "classnames": "^2.3.2",
+    "global": "^4.4.0",
+    "next": "^15.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sharp": "^0.33.5",
+    "ts-pattern": "^5.0.4"
+  },
+  "devDependencies": {
+    "@next/eslint-plugin-next": "^14.0.3",
+    "@tailwindcss/forms": "^0.5.9",
+    "@tailwindcss/typography": "^0.5.15",
+    "@types/node": "^20.4.5",
+    "@types/react": "^18.2.18",
+    "@typescript-eslint/eslint-plugin": "^6.2.1",
+    "@typescript-eslint/parser": "^6.2.1",
+    "autoprefixer": "^10.4.16",
+    "cssnano": "^6.0.1",
+    "eslint": "^8.46.0",
+    "eslint-config-next": "^14.0.3",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.28.0",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "file-loader": "^6.2.0",
+    "postcss": "^8.4.49",
+    "postcss-preset-env": "^9.1.0",
+    "prettier": "^3.0.0",
+    "prettier-plugin-tailwindcss": "^0.5.7",
+    "rimraf": "^5.0.0",
+    "sass": "^1.64.2",
+    "sort-package-json": "^2.5.1",
+    "stylelint": "^15.10.2",
+    "stylelint-config-recommended": "^13.0.0",
+    "stylelint-order": "^6.0.3",
+    "stylelint-prettier": "^4.0.2",
+    "tailwindcss": "^3.4.16",
+    "typescript": "^5.7.2",
+    "webpack": "^5.97.1"
+  },
+  "resolutions": {
+    "strip-ansi": "^6.0.1",
+    "string-width": "^4.2.3"
+  },
+  "engines": {
+    "node": ">=16 <=20",
+    "yarn": ">=1.22.0"
+  },
+  "browserslist": [
+    "defaults",
+    "not IE 11",
+    "maintained node versions"
+  ]
+}
