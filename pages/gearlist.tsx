@@ -90,7 +90,6 @@ const pctGearList: GearItem[] = [
      { id: 60, category: 'Miscellaneous', name: 'Travel Toothpaste - 25 g', link: 'https://amzn.to/41GtzNL' },
      { id: 61, category: 'Miscellaneous', name: 'Travel Sunscreen - 25 g', link: 'https://amzn.to/41BZyhV' },
    ];
- 
 
 const Gear: FC = memo(() => {
   const renderLink = (item: GearItem) =>
@@ -132,10 +131,11 @@ const Gear: FC = memo(() => {
               <section className="py-4">
                 <h2 className="text-4xl font-semibold text-center underline mb-16 text-white">
                   Camera Gear List
-                </h2><h1 className="text-sm mb-2">&#8203;</h1><h1 className="text-sm mb-2">&#8203;</h1>
+                </h2>
+                <h1 className="text-sm mb-2">&#8203;</h1><h1 className="text-sm mb-2">&#8203;</h1>
                 {Array.from(new Set(gearList.map((item) => item.category))).map((category) => (
                   <div className="mb-8" key={category}>
-                    <h3 className="text-xl font-bold mb-4 text-center text-white">{category}</h3><h1 className="text-sm mb-2">&#8203;</h1>
+                    <h3 className="text-xl font-bold mb-4 text-center text-white">{category}</h3>
                     <ul className="space-y-4 text-center">
                       {gearList
                         .filter((item) => item.category === category)
@@ -158,17 +158,29 @@ const Gear: FC = memo(() => {
                 ))}
               </section>
               <h1 className="text-sm mb-2">&#8203;</h1>
+              {/* AdSense Ad Between Gear Lists */}
+              <div className="text-center py-4">
+                
+                <ins className="adsbygoogle"
+                  style={{ display: 'block', width: '100%', height: '100px' }}
+                  data-ad-client="ca-pub-4053767635931401"
+                  data-ad-slot="1234567890"></ins>
+              </div>
+
+              <h1 className="text-sm mb-2">&#8203;</h1>
+
               {/* PCT Gear Section */}
               <section className="py-4">
                 <h2 className="text-4xl font-semibold text-center underline mb-16 text-white">
                   Pacific Crest Trail - Full Gear List
-                </h2><h1 className="text-sm mb-2">&#8203;</h1><h1 className="text-sm mb-2">&#8203;</h1>
+                </h2>
+                <h1 className="text-sm mb-2">&#8203;</h1><h1 className="text-sm mb-2">&#8203;</h1>
                 <h2 className="text-2xl font-semibold text-center mb-8 text-white">
                   Total Weight: 25.04 lb | Base Weight: 10.50 lb | Consumable Weight: 10.93 lb | Worn Weight: 3.61 lb
-                </h2><h1 className="text-sm mb-2">&#8203;</h1>
+                </h2>
                 {Array.from(new Set(pctGearList.map((item) => item.category))).map((category) => (
                   <div className="mb-8" key={category}>
-                    <h3 className="text-xl font-bold mb-4 text-center text-white">{category}</h3><h1 className="text-sm mb-2">&#8203;</h1>
+                    <h3 className="text-xl font-bold mb-4 text-center text-white">{category}</h3>
                     <ul className="space-y-4 text-center">
                       {pctGearList
                         .filter((item) => item.category === category)
@@ -186,13 +198,24 @@ const Gear: FC = memo(() => {
                             </a>
                           </li>
                         ))}
-                    </ul>
+                    </ul>    
                   </div>
                 ))}
-              </section>
+              </section>     <div className="text-center py-4">
+          <script  async 
+  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4053767635931401" 
+  crossOrigin="anonymous"
+></script>
+            <ins className="adsbygoogle"
+              style={{ display: 'block', width: '100%', height: '100px' }}
+              data-ad-client="ca-pub-4053767635931401"
+              data-ad-slot="1234567890"></ins>
+          </div>
             </main>
           </div>
           <Footer />
+          {/* Final AdSense Ad at the Bottom of the Page */}
+     
         </div>
       </div>
     </Page>
