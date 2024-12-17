@@ -1,9 +1,4 @@
-import {Head, Html, Main, NextScript} from 'next/document';
-
-// next/document <Head /> vs next/head <Head />
-//
-// next/document Head is rendered once on the server. This is different from next/head which will
-// rebuild the next/head fields each time it's called, and won't overwrite next/document's Head.
+import { Head, Html, Main, NextScript } from 'next/document';
 
 export default function Document() {
   return (
@@ -14,6 +9,12 @@ export default function Document() {
           - https://github.com/facebook/react/issues/11538
           - https://bugs.chromium.org/p/chromium/issues/detail?id=872770 */}
         <meta content="notranslate" name="google" />
+        
+        {/* Google Site Verification */}
+        <meta
+          name="google-site-verification"
+          content="JrOHREKU6lNaYPx7gZPlXYXlt1-vJiiGTIjuw5xsDVg"
+        />
       </Head>
       <body className="bg-black">
         <Main />
