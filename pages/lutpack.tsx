@@ -15,53 +15,47 @@ const LUTPack: FC = memo(() => {
         <PluginsHeader />
 
         {/* Background Wrapper */}
-        <div className="flex-1 bg-black/50 backdrop-blur-md">
+        <div
+          className="flex-1 relative"
+          style={{
+            backgroundColor: 'rgba(2, 2, 2, 0.4)',
+            backdropFilter: 'blur(17.5px)',
+            WebkitBackdropFilter: 'blur(10px)',
+          }}
+        >
           {/* Content Wrapper */}
           <main className="container mx-auto py-8 px-4 lg:px-8">
             {/* Hero Section */}
             <section className="py-12 text-center text-white">
-            <h1 className="text-sm mb-2">
-  &#8203;
-</h1>
-<h1 className="text-sm mb-2">
-  &#8203;
-</h1>
-
-              <h1 className="text-4xl font-bold lg:text-5xl mb-4">Cinematic LUT Pack</h1>    <h1 className="text-sm mb-2">
-  &#8203;
-</h1>
-
+              <h1 className="text-sm mb-2">&#8203;</h1><h1 className="text-sm mb-2">&#8203;</h1>
+              <h1 className="text-4xl font-bold lg:text-5xl mb-4">Cinematic LUT Pack</h1><h1 className="text-sm mb-2">&#8203;</h1>
               <p className="text-lg lg:text-xl max-w-3xl mx-auto">
                 Transform your videos into cinematic masterpieces with this professional-grade LUT
                 pack, designed to elevate your visuals with rich, dynamic colors.
-              </p>
-              
-<section className="py-8 text-center">
-  <button
-    className="py-4 px-8 bg-transparent rounded-lg text-lg font-bold hover:bg-red-500"
-    style={{ color: '#FF0000', border: '4px solid #FF0000' }}
-  >
-    Purchase the Cinematic LUT Pack for $29.99
-  </button>
-</section>
+              </p><h1 className="text-sm mb-2">&#8203;</h1>
+              <section className="py-8 text-center">
+                <button
+                  className="py-2 px-4 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transform transition-transform hover:scale-105"
+                >
+                  Purchase the Cinematic Lut Pack for $19.99
+                </button>
+              </section><h1 className="text-sm mb-2">&#8203;</h1>
             </section>
 
-            {/* Add Gap Between Hero Section and List */}
+            {/* Additional Content */}
             <div className="mb-16 text-white">
-            <p>
+              <p>
                 My <strong>Cinematic LUT Pack</strong> is a carefully curated collection of
                 color-grading tools that will help you achieve stunning visuals effortlessly. These LUTs are designed to bring out the best
                 in your footage, whether you're working on short films, YouTube videos, or client
                 projects.
               </p>
-              </div>
+            </div>
+
             {/* Content Section */}
             <section className="py-8 text-white space-y-6">
-              <h2 className="text-2xl font-bold">What’s Included in the LUT Pack?</h2> 
-           
-              <ul className="list-disc pl-5 space-y-4">    <h1 className="text-sm mb-2">
-  &#8203;
-</h1>    
+              <h2 className="text-2xl font-bold">What’s Included in the LUT Pack?</h2>
+              <ul className="list-disc pl-5 space-y-4">
                 <li>
                   <strong>25 unique cinematic LUTs</strong> for various styles, from warm and
                   vibrant tones to dramatic, moody aesthetics.
@@ -79,12 +73,11 @@ const LUTPack: FC = memo(() => {
                   consistency across different platforms.
                 </li>
               </ul>
-            </section>   
+            </section>
 
+            {/* Why Choose Section */}
             <section className="py-8 text-white">
               <h2 className="text-2xl font-bold mb-4">Why Choose This LUT Pack?</h2>
-              <p>
-              </p>    
               <ul className="list-disc pl-5 space-y-4">
                 <li>
                   Save time with <strong>pre-designed looks</strong> that give your videos a
@@ -104,14 +97,15 @@ const LUTPack: FC = memo(() => {
                 </li>
               </ul>
             </section>
+
+            {/* Purchase Button */}
             <section className="py-8 text-center">
-  <button
-    className="py-4 px-8 bg-transparent rounded-lg text-lg font-bold hover:bg-red-500"
-    style={{ color: '#FF0000', border: '4px solid #FF0000' }}
-  >
-    Purchase the Cinematic LUT Pack for $29.99
-  </button>
-</section>
+              <button
+                className="py-2 px-4 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transform transition-transform hover:scale-105"
+              >
+                Purchase the Cinematic Lut Pack for $19.99
+              </button>
+            </section>
           </main>
         </div>
 

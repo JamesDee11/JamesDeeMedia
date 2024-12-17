@@ -13,7 +13,6 @@ interface GearItem {
   link: string;
   linkText?: string; // Optional custom link text for non-Amazon links
 }
-
 const gearList: GearItem[] = [
   { id: 1, category: 'Cameras', name: 'Canon T7', link: 'https://amzn.to/41qe2Bg' },
   { id: 2, category: 'Cameras', name: 'Canon 90D', link: 'https://amzn.to/3B8Xt2k' },
@@ -92,6 +91,7 @@ const pctGearList: GearItem[] = [
      { id: 61, category: 'Miscellaneous', name: 'Travel Sunscreen - 25 g', link: 'https://amzn.to/41BZyhV' },
    ];
  
+
 const Gear: FC = memo(() => {
   const renderLink = (item: GearItem) =>
     item.link.includes('amzn.to') ? 'View on Amazon' : item.linkText || 'View Item';
@@ -102,99 +102,98 @@ const Gear: FC = memo(() => {
         className="min-h-screen bg-fixed bg-cover bg-center flex flex-col"
         style={{ backgroundImage: `url('${heroImage}')` }}
       >
-        <PluginsHeader />
-        <div className="flex-1 bg-black/50 backdrop-blur-md overflow-auto">
-          <nav className="text-center py-4">
-            <Link href="/plugins" className="text-yellow-400 hover:underline text-lg">
-              Back to Plugins
-            </Link>
-          </nav>
-          <main className="container mx-auto py-8 px-4 lg:px-8">
-            <section className="py-8 text-center text-white">
-            <p className="text-4xl font-bold underline lg:text-3xl">
-  Explore my gear lists with easy links to find the items online
-</p>
-  <p className="text-sm text-gray-200 mt-2">
-  Using these links support my work by earning me small commission at no extra cost to you. Thank you, i appreciate you!
-</p>
-
-            </section>
-            <h1 className="text-sm mb-2">&#8203;</h1>
-            {/* Camera Gear Section */}
-            <section className="py-4">
-              <h2 className="text-4xl font-semibold text-center underline mb-16 text-white">
-                <u>Camera Gear List</u>
-              </h2>
-              <h1 className="text-sm mb-2">&#8203;</h1><h1 className="text-sm mb-2">&#8203;</h1>
-              {Array.from(new Set(gearList.map((item) => item.category))).map((category) => (
-                <div className="mb-8" key={category}>
-                  <h3 className="text-xl font-bold mb-4 text-center text-white">{category}</h3>
-                  <h1 className="text-sm mb-2">&#8203;</h1><h1 className="text-sm mb-2">&#8203;</h1>
-                  <ul className="space-y-4 text-center">
-                    {gearList
-                      .filter((item) => item.category === category)
-                      .map((item) => (
-                        <li className="text-mb" key={item.id}>
-                          <span className="text-white">{item.name}</span>{' '}
-                          <span className="text-white">-</span>{' '}
-                          <a
-                            className="custom-link hover:underline"
-                            href={item.link}
-                            rel="noopener noreferrer"
-                            target="_blank"
-                          >
-                            {renderLink(item)}
-                          </a>
-                        </li>
-                      ))}
-                  </ul>
-                  <h1 className="text-sm mb-2">&#8203;</h1><h1 className="text-sm mb-2">&#8203;</h1>
-                </div>
-              ))}
-            </section>
-            <h1 className="text-sm mb-2">&#8203;</h1>
-            {/* PCT Gear Section */}
-            <section className="py-4">
-              <h2 className="text-4xl font-semibold text-center underline mb-16 text-white">
-                <u>Pacific Crest Trail - Full Gear List</u>
-              </h2><h1 className="text-sm mb-2">&#8203;</h1><h1 className="text-sm mb-2">&#8203;</h1>
+        {/* Overlay with Blur and Dark Background */}
+        <div
+          className="flex-1 relative"
+          style={{
+            backgroundColor: 'rgba(2, 2, 2, 0.4)',
+            backdropFilter: 'blur(17.5px)',
+            WebkitBackdropFilter: 'blur(10px)',
+          }}
+        >
+          <PluginsHeader />
+          <div className="flex-1 overflow-auto">
+            <nav className="text-center py-4">
+              <Link href="/plugins" className="text-yellow-400 hover:underline text-lg">
               <h1 className="text-sm mb-2">&#8203;</h1>
-              <h2 className="text-2xl font-semibold text-center mb-16 text-white">
-                <div>Total Weight: 25.04 lb</div>
-                <div>Base Weight: 10.50 lb</div>
-                <div>Consumable Weight: 10.93 lb</div>
-                <div>Worn Weight: 3.61 lb</div>
-              </h2><h1 className="text-sm mb-2">&#8203;</h1>
+              </Link>
+            </nav>
+            <main className="container mx-auto py-8 px-4 lg:px-8">
+              <section className="py-8 text-center text-white">
+                <p className="text-4xl font-bold underline lg:text-3xl">
+                  Explore my gear lists with easy links to find the items online
+                </p>
+                <p className="text-sm text-gray-200 mt-2">
+                  Using these links supports my work by earning me small commissions at no extra cost to you. Thank you, I appreciate you!
+                </p>
+              </section>
               <h1 className="text-sm mb-2">&#8203;</h1>
-              {Array.from(new Set(pctGearList.map((item) => item.category))).map((category) => (
-                <div className="mb-8" key={category}>
-                  <h3 className="text-xl font-bold mb-4 text-center text-white">{category}</h3><h1 className="text-sm mb-2">&#8203;</h1>
-                  <h1 className="text-sm mb-2">&#8203;</h1>
-                  <ul className="space-y-4 text-center">
-                    {pctGearList
-                      .filter((item) => item.category === category)
-                      .map((item) => (
-                        <li className="text-md" key={item.id}>
-                          <span className="text-white">{item.name}</span>{' '}
-                          <span className="text-white">-</span>{' '}
-                          <a
-                            className="custom-link hover:underline"
-                            href={item.link}
-                            rel="noopener noreferrer"
-                            target="_blank"
-                          >
-                            {renderLink(item)}
-                          </a>
-                        </li>
-                      ))}
-                  </ul><h1 className="text-sm mb-2">&#8203;</h1>
-                  <h1 className="text-sm mb-2">&#8203;</h1>
-                </div>
-              ))}
-            </section>
-          </main>
+              {/* Camera Gear Section */}
+              <section className="py-4">
+                <h2 className="text-4xl font-semibold text-center underline mb-16 text-white">
+                  Camera Gear List
+                </h2><h1 className="text-sm mb-2">&#8203;</h1><h1 className="text-sm mb-2">&#8203;</h1>
+                {Array.from(new Set(gearList.map((item) => item.category))).map((category) => (
+                  <div className="mb-8" key={category}>
+                    <h3 className="text-xl font-bold mb-4 text-center text-white">{category}</h3><h1 className="text-sm mb-2">&#8203;</h1>
+                    <ul className="space-y-4 text-center">
+                      {gearList
+                        .filter((item) => item.category === category)
+                        .map((item) => (
+                          <li className="text-mb" key={item.id}>
+                            <span className="text-white">{item.name}</span>{' '}
+                            <span className="text-white">-</span>{' '}
+                            <a
+                              className="custom-link hover:underline"
+                              href={item.link}
+                              rel="noopener noreferrer"
+                              target="_blank"
+                            >
+                              {renderLink(item)}
+                            </a>
+                          </li>
+                        ))}
+                    </ul>
+                  </div>
+                ))}
+              </section>
+              <h1 className="text-sm mb-2">&#8203;</h1>
+              {/* PCT Gear Section */}
+              <section className="py-4">
+                <h2 className="text-4xl font-semibold text-center underline mb-16 text-white">
+                  Pacific Crest Trail - Full Gear List
+                </h2><h1 className="text-sm mb-2">&#8203;</h1><h1 className="text-sm mb-2">&#8203;</h1>
+                <h2 className="text-2xl font-semibold text-center mb-8 text-white">
+                  Total Weight: 25.04 lb | Base Weight: 10.50 lb | Consumable Weight: 10.93 lb | Worn Weight: 3.61 lb
+                </h2><h1 className="text-sm mb-2">&#8203;</h1>
+                {Array.from(new Set(pctGearList.map((item) => item.category))).map((category) => (
+                  <div className="mb-8" key={category}>
+                    <h3 className="text-xl font-bold mb-4 text-center text-white">{category}</h3><h1 className="text-sm mb-2">&#8203;</h1>
+                    <ul className="space-y-4 text-center">
+                      {pctGearList
+                        .filter((item) => item.category === category)
+                        .map((item) => (
+                          <li className="text-md" key={item.id}>
+                            <span className="text-white">{item.name}</span>{' '}
+                            <span className="text-white">-</span>{' '}
+                            <a
+                              className="custom-link hover:underline"
+                              href={item.link}
+                              rel="noopener noreferrer"
+                              target="_blank"
+                            >
+                              {renderLink(item)}
+                            </a>
+                          </li>
+                        ))}
+                    </ul>
+                  </div>
+                ))}
+              </section>
+            </main>
+          </div>
+          <Footer />
         </div>
-        <Footer />
       </div>
     </Page>
   );

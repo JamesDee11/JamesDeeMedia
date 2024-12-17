@@ -15,24 +15,26 @@ import QuoteIcon from "../Icon/QuoteIcon";
 import Section from "../Layout/Section";
 
 const Testimonials: FC = memo(() => {
-  const [testimonialsList, setTestimonialsList] = useState(
-    testimonial.testimonials,
+  const [testimonialsList, setTestimonialsList] = useState<TestimonialType[]>(
+    testimonial.testimonials || [],
   );
   const [review, setReview] = useState({ comment: "", author: "" });
   const [parallaxEnabled, setParallaxEnabled] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   const testimonialsPerPage = 4;
   const scrollContainer = useRef<HTMLDivElement>(null);
 
   const { imageSrc } = testimonial;
 
+  // Resolve image source safely
   const resolveSrc = useMemo(
     () =>
       imageSrc
         ? typeof imageSrc === "string"
           ? imageSrc
-          : imageSrc.src
+          : (imageSrc as { src: string }).src
         : undefined,
     [imageSrc],
   );
@@ -42,18 +44,44 @@ const Testimonials: FC = memo(() => {
     setParallaxEnabled(!(isMobile && isApple));
   }, []);
 
-  const handleReviewSubmit = () => {
-    if (!review.comment || !review.author) return;
-
-    const newTestimonial = {
-      name: review.author,
-      text: review.comment,
-      image: "",
+  // Fetch testimonials from API
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        const response = await fetch("/api/testimonials");
+        const data = await response.json();
+        if (data.success) {
+          setTestimonialsList(data.data);
+        }
+      } catch (error) {
+        console.error("Error fetching testimonials:", error);
+      } finally {
+        setLoading(false);
+      }
     };
 
-    setTestimonialsList((prev) => [...prev, newTestimonial]);
-    setReview({ comment: "", author: "" });
-    setCurrentPage(0); // Reset to the first page
+    fetchTestimonials();
+  }, []);
+
+  // Submit a new testimonial
+  const handleReviewSubmit = async () => {
+    if (!review.comment || !review.author) return;
+
+    try {
+      const response = await fetch("/api/testimonials", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: review.author, text: review.comment }),
+      });
+      const data = await response.json();
+      if (data.success) {
+        setTestimonialsList((prev) => [...prev, data.data]);
+        setReview({ comment: "", author: "" });
+        setCurrentPage(0);
+      }
+    } catch (error) {
+      console.error("Error submitting testimonial:", error);
+    }
   };
 
   const totalPages = Math.ceil(testimonialsList.length / testimonialsPerPage);
@@ -80,29 +108,33 @@ const Testimonials: FC = memo(() => {
         <div className="z-10 w-full max-w-screen-lg px-4 lg:px-0">
           {/* Testimonials Section */}
           <div className="overflow-hidden mb-8">
-            <div
-              ref={scrollContainer}
-              className="flex transition-all duration-700 snap-x snap-mandatory overflow-x-auto no-scrollbar"
-            >
-              {[...Array(totalPages)].map((_, pageIndex) => (
-                <div
-                  key={pageIndex}
-                  className="grid grid-cols-1 md:grid-cols-2 gap-6 shrink-0 snap-start w-full px-2"
-                >
-                  {testimonialsList
-                    .slice(
-                      pageIndex * testimonialsPerPage,
-                      (pageIndex + 1) * testimonialsPerPage,
-                    )
-                    .map((testimonial, index) => (
-                      <Testimonial
-                        key={`${testimonial.name}-${index}`}
-                        testimonial={testimonial}
-                      />
-                    ))}
-                </div>
-              ))}
-            </div>
+            {loading ? (
+              <p className="text-center text-white">Loading testimonials...</p>
+            ) : (
+              <div
+                ref={scrollContainer}
+                className="flex transition-all duration-700 snap-x snap-mandatory overflow-x-auto no-scrollbar"
+              >
+                {[...Array(totalPages)].map((_, pageIndex) => (
+                  <div
+                    key={pageIndex}
+                    className="grid grid-cols-1 md:grid-cols-2 gap-6 shrink-0 snap-start w-full px-2"
+                  >
+                    {testimonialsList
+                      .slice(
+                        pageIndex * testimonialsPerPage,
+                        (pageIndex + 1) * testimonialsPerPage,
+                      )
+                      .map((testimonial, index) => (
+                        <Testimonial
+                          key={`${testimonial.name}-${index}`}
+                          testimonial={testimonial}
+                        />
+                      ))}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Pagination Controls */}

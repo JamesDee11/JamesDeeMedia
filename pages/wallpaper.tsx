@@ -1,4 +1,3 @@
-// wallpapers.tsx
 import { FC, memo, useRef } from 'react';
 import Page from '../src/components/Layout/Page';
 import Footer from '../src/components/Sections/Footer';
@@ -6,7 +5,7 @@ import PluginsHeader from '../src/components/Sections/PluginsHeader';
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
 import classNames from 'classnames';
 
-const heroImage = "/images/headerbackground.jpg"
+const heroImage = "/images/headerbackground.webp"
 
 interface Wallpaper {
   id: number;
@@ -25,95 +24,78 @@ const wallpapers: Wallpaper[] = [
   { id: 4, title: 'Portrait Photo 2', description: 'Another beautiful portrait.', price: '$4.99', imageUrl: '/images/portrait2.jpg', aspect: 'portrait', type: 'photo' },
   { id: 5, title: 'Portrait Photo 3', description: 'A serene portrait.', price: '$4.99', imageUrl: '/images/portrait3.jpg', aspect: 'portrait', type: 'photo' },
   { id: 6, title: 'Portrait Photo 4', description: 'A vibrant portrait.', price: '$4.99', imageUrl: '/images/portrait4.jpg', aspect: 'portrait', type: 'photo' },
-  { id: 7, title: 'Landscape Video 1', description: 'A dynamic landscape video.', price: '$6.99', imageUrl: '/videos/landscape1.mp4', aspect: 'landscape', type: 'video' },
-  { id: 8, title: 'Landscape Video 2', description: 'Another scenic landscape video.', price: '$6.99', imageUrl: '/videos/landscape2.mp4', aspect: 'landscape', type: 'video' },
-  { id: 9, title: 'Portrait Video 1', description: 'A beautiful portrait video.', price: '$6.99', imageUrl: '/videos/portrait1.mp4', aspect: 'portrait', type: 'video' },
-  { id: 10, title: 'Portrait Video 2', description: 'Another stunning portrait video.', price: '$6.99', imageUrl: '/videos/portrait2.mp4', aspect: 'portrait', type: 'video' },
-  { id: 11, title: 'Portrait Video 3', description: 'A breathtaking portrait video.', price: '$6.99', imageUrl: '/videos/portrait3.mp4', aspect: 'portrait', type: 'video' },
-  { id: 12, title: 'Portrait Video 4', description: 'A dynamic portrait video.', price: '$6.99', imageUrl: '/videos/portrait4.mp4', aspect: 'portrait', type: 'video' },
 ];
 
 const Wallpapers: FC = memo(() => {
   return (
     <Page description="Explore stunning wallpapers!" title="Portfolio">
+      {/* Background with Overlay */}
       <div
         className="min-h-screen bg-fixed bg-cover bg-center flex flex-col"
         style={{ backgroundImage: `url('${heroImage}')` }}
       >
-        <PluginsHeader />
+        {/* Overlay with blur and background color */}
+        <div
+          className="flex-1 relative"
+          style={{
+            backgroundColor: 'rgba(2, 2, 2, 0.4)',
+            backdropFilter: 'blur(17.5px)',
+            WebkitBackdropFilter: 'blur(10px)',
+          }}
+        >
+          {/* Page Header */}
+          <PluginsHeader />
 
-        <main className="w-full py-8 px-4 lg:px-8">
-          <section className="relative z-10 pt-20 pb-12 text-center text-white">
-            <p className="text-2xl font-semibold lg:text-3xl">
-            </p>
-          </section>
+          {/* Main Content */}<h1 className="text-sm mb-2">&#8203;</h1><h1 className="text-sm mb-2">&#8203;</h1>
+          <main className="w-full py-8 px-4 lg:px-8">
+            <section className="relative z-10 pt-20 pb-12 text-center text-white">
+              <h2 className="text-4xl font-bold underline mb-8">Wallpapers Pack</h2>
+            </section>
+            <section className="relative z-10 pt-20 pb-12 text-center text-white">
+              <h2 className="text-md mb-8">Wallpapers created with my favourite shots from around the world, including the beautiful cities of Europe, and the amazing mountains of the Pacific Crest Trail.</h2>
+            </section>
+            {/* Purchase Button */}
+            <section className="py-8 text-center">
+              <button
+                className="py-2 px-4 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transform transition-transform hover:scale-105"
+              >
+                Purchase the Wallpaper Pack for $4.99
+              </button>
+            </section><h1 className="text-sm mb-2">&#8203;</h1>
 
-          <section className="py-8">    
-            <h2 className="text-4xl font-bold text-center underline mb-12 text-white">
-              Wallpapers Pack
-            </h2>  <section className="py-8 text-center">
-  <button
-    className="py-4 px-8 bg-transparent rounded-lg text-lg font-bold hover:bg-red-500"
-    style={{ color: '#FF0000', border: '4px solid #FF0000' }}
-  >
-    Purchase the Wallpaper Pack for $4.99
-  </button>
-</section>  <h1 className="text-sm mb-2">
-  &#8203;
-</h1>   
-            <div className="grid grid-cols-1 gap-6 max-w-none">
-              {/* 2 Landscape Items */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
-                {wallpapers
-                  .filter((wallpaper) => wallpaper.aspect === 'landscape')
-                  .slice(0, 2)
-                  .map((wallpaper) => (
-                    <div key={wallpaper.id} className="w-full">
-                      <PortfolioMedia item={wallpaper} />
-                    </div>
-                  ))}
+            {/* Wallpapers Grid */}
+            <section className="py-8">
+              <div className="grid grid-cols-1 gap-6 max-w-none">
+                {/* 2 Landscape Items */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+                  {wallpapers
+                    .filter((wallpaper) => wallpaper.aspect === 'landscape')
+                    .slice(0, 2)
+                    .map((wallpaper) => (
+                      <div key={wallpaper.id} className="w-full">
+                        <PortfolioMedia item={wallpaper} />
+                      </div>
+                    ))}
+                </div>
+
+                {/* 4 Portrait Items */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 mt-6">
+                  {wallpapers
+                    .filter((wallpaper) => wallpaper.aspect === 'portrait')
+                    .slice(0, 4)
+                    .map((wallpaper) => (
+                      <div key={wallpaper.id} className="w-full">
+                        <PortfolioMedia item={wallpaper} />
+                      </div>
+                    ))}
+                </div>
               </div>
+            </section>
+          </main>
 
-              {/* 4 Portrait Items */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 mt-6">
-                {wallpapers
-                  .filter((wallpaper) => wallpaper.aspect === 'portrait')
-                  .slice(0, 4)
-                  .map((wallpaper) => (
-                    <div key={wallpaper.id} className="w-full">
-                      <PortfolioMedia item={wallpaper} />
-                    </div>
-                  ))}
-              </div>
-
-              {/* 2 More Landscape Items */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 mt-6">
-                {wallpapers
-                  .filter((wallpaper) => wallpaper.aspect === 'landscape')
-                  .slice(2, 4)
-                  .map((wallpaper) => (
-                    <div key={wallpaper.id} className="w-full">
-                      <PortfolioMedia item={wallpaper} />
-                    </div>
-                  ))}
-              </div>
-
-              {/* 4 More Portrait Items */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 mt-6">
-                {wallpapers
-                  .filter((wallpaper) => wallpaper.aspect === 'portrait')
-                  .slice(4, 8)
-                  .map((wallpaper) => (
-                    <div key={wallpaper.id} className="w-full">
-                      <PortfolioMedia item={wallpaper} />
-                    </div>
-                  ))}
-              </div>
-            </div>
-          </section>
-        </main>
-
-        <Footer />
+          {/* Footer */}
+          <Footer />
+        </div>
       </div>
     </Page>
   );

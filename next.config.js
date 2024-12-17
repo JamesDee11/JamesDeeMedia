@@ -82,6 +82,11 @@ const nextConfig = {
   eslint: {
     dirs: ["src"], // Limit linting to specific directories
   },
+
+  // Environment variable inclusion for MongoDB
+  env: {
+    MONGODB_URI: process.env.MONGODB_URI || "", // Use the environment variable or fallback to an empty string
+  },
 };
 
 module.exports = nextConfig;

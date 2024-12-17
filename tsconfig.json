@@ -24,7 +24,7 @@
     "./pages/**/*.ts",
     "./pages/**/*.tsx",
     "./src/components/**/*"
-  ],
+, "lib", "global.d.ts"  ],
   "exclude": ["node_modules", ".next", "build"]
 }
 

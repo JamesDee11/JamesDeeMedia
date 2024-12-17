@@ -100,7 +100,7 @@ export const aboutData: About = {
 
 I picked up a camera four years ago after experiencing a life-changing knee injury and found a passion for filmmaking that has taken me around the world.
 
-Since i started shooting ive had the opportunity to work with multiple professional paintball teams and paintballers, corporate clients, car enthusiasts, solo entrepreneurs and now GoSportsLive!
+Since I started shooting ive had the opportunity to work with multiple professional paintball teams and paintballers, corporate clients, car enthusiasts, solo entrepreneurs and now GoSportsLive!
 
 I run multiple social media accounts on Instagram, TikTok, and YouTube which have acquired over 50 million views, and I'm looking to share my knowledge, skills, and tools so you can do the same.
 
@@ -215,7 +215,7 @@ export const experience: TimelineItem[] = [
         Owner of JamesDeeMedia. Specializing in paintball event coverage for
         Individuals and Teams but knowledgable in vehicle, real estate, wedding
         and travel. With four years of hands-on experience managing projects
-        from start to finish i have all the skills needed in client
+        from start to finish I have all the skills needed in client
         communication, on-site shooting, post production and delivery to ensure
         client satisfaction and professional grade content.
       </p>
@@ -227,11 +227,11 @@ export const experience: TimelineItem[] = [
     title: "Videographer",
     content: (
       <p>
-        Shooting passion projects with GoSportsLive at National events, i have
+        Shooting passion projects with GoSportsLive at National events, I have
         had the opportunity to shoot on the Professional NXL field and work
         alongside some of the top videographers within the industry. This has
         give me the skills and knowledge needed to truly become the best at what
-        i do.
+        I do.
       </p>
     ),
   },

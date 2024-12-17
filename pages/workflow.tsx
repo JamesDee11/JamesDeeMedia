@@ -14,7 +14,15 @@ const Workflow: FC = memo(() => {
       >
         <PluginsHeader />
 
-        <div className="flex-1 bg-black/50 backdrop-blur-md">
+        <div
+  className="flex-1 relative"
+  style={{
+    backgroundColor: 'rgba(2, 2, 2, 0.4)',
+    backdropFilter: 'blur(17.5px)',
+    WebkitBackdropFilter: 'blur(10px)',
+  }}
+>
+
           <main className="container mx-auto py-8 px-4 lg:px-8">
             <section className="py-12 text-center text-white">
               <h1 className="text-sm mb-2">&#8203;</h1>    
@@ -29,12 +37,11 @@ const Workflow: FC = memo(() => {
             </section>
             <section className="py-8 text-center">
             <button
-    className="py-4 px-8 bg-transparent rounded-lg text-lg font-bold hover:bg-red-500"
-    style={{ color: '#FF0000', border: '4px solid #FF0000' }}
-  >
-   Purchase the Workflow Pack for $19.99
-  </button>
-            
+  className="py-2 px-4 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transform transition-transform hover:scale-105"
+>
+  Purchase the Workflow Pack for $29.99
+</button>
+
             </section>
             <section className="py-8">
               <div className="text-white space-y-6">
@@ -171,16 +178,14 @@ const Workflow: FC = memo(() => {
                 <li>Tailored specifically for short form creators through hours of trial and error</li>
               </ul>
             </section>
-
-            <section className="py-8 text-center">
-            <button
-    className="py-4 px-8 bg-transparent rounded-lg text-lg font-bold hover:bg-red-500"
-    style={{ color: '#FF0000', border: '4px solid #FF0000' }}
+            <h1 className="text-sm mb-2">&#8203;</h1>
+            <div className="flex justify-center">
+  <button
+    className="py-2 px-4 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 transform transition-transform hover:scale-105"
   >
-   Purchase the Workflow Pack for $19.99
+   Purchase the Workflow Pack for $29.99
   </button>
-            
-            </section>
+</div><h1 className="text-sm mb-2">&#8203;</h1>
           </main>
         </div>
 
